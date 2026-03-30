@@ -1,0 +1,33 @@
+Options -Indexes
+
+# Sadece index.php ve cron.php erisime acik
+<FilesMatch "\.(php)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+<FilesMatch "^(index|cron)\.php$">
+  Order allow,deny
+  Allow from all
+</FilesMatch>
+
+# Log, passwd, commit dosyalarini kapat
+<FilesMatch "\.(log|php~|bak)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+<Files "passwd.php">
+  Order allow,deny
+  Deny from all
+</Files>
+<Files ".last_commit">
+  Order allow,deny
+  Deny from all
+</Files>
+<Files ".pending_bell">
+  Order allow,deny
+  Deny from all
+</Files>
+<Files "cron.log">
+  Order allow,deny
+  Deny from all
+</Files>
