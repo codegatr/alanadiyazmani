@@ -1,0 +1,268 @@
+{
+  "project": "alanadiyazmani.com — WHOIS Sorgulama Sitesi",
+  "wisecp_integration": "sisyatek.com",
+  "version": "1.5.1",
+  "release_date": "2026-03-30",
+  "changelog": [
+    {
+      "version": "1.5.1",
+      "date": "2026-03-30",
+      "title": "Admin Ayar Kaydetme + GitHub Push/Pull Duzeltme",
+      "changes": [
+        {
+          "type": "bugfix",
+          "file": "admin/index.php",
+          "description": "Ayar kaydetme DB oncelikli yapildi. config.php yazma izni olmasa bile DB ye kaydeder, hata mesaji duzeltildi."
+        },
+        {
+          "type": "bugfix",
+          "file": "admin/index.php",
+          "description": "HTTP 409 Conflict hatasi duzeltildi. GitHub Push fonksiyonu her dosya icin once SHA alip sonra PUT yapiyor."
+        },
+        {
+          "type": "feature",
+          "file": "admin/index.php",
+          "description": "GitHub Push butonu eklendi: siteyi GitHub reposuna yukle. Pull butonu: GitHub dan guncelleme cek."
+        },
+        {
+          "type": "improvement",
+          "file": "includes/schema.sql",
+          "description": "site_settings tablosu eklendi. Tum ayarlar DB de saklanir."
+        }
+      ]
+    },
+    {
+      "version": "1.5.0",
+      "date": "2026-03-30",
+      "title": "Admin Tam Yetki + GitHub Modulu + Cron + Can Bildirimi",
+      "changes": [
+        {
+          "type": "feature",
+          "file": "admin/index.php",
+          "description": "Site Ayarlari sekmesi: SITE_NAME, SITE_URL, WiseCP URL, DB bilgileri, AdSense ID/Slot, WHOIS cache, bildirim ayarlari admin panelinden degistirilebilir. Tum ayarlar includes/config.php dosyasina kaydedilir."
+        },
+        {
+          "type": "feature",
+          "file": "admin/index.php",
+          "description": "GitHub Guncelleme Modulu: repo durumu gosterimi, manuel guncelleme butonu, commit mesaji/hash/tarih gorunumu."
+        },
+        {
+          "type": "feature",
+          "file": "admin/cron.php",
+          "description": "Zamanlanmis gorev scripti. cPanel Cron Jobs ile belirtilen aralikta GitHub guncelleme kontrolu yapar. CLI veya URL ile tetiklenebilir."
+        },
+        {
+          "type": "feature",
+          "file": "admin/index.php",
+          "description": "Can (bell) bildirimi: yeni GitHub surumu oldugunda admin panel topbar inda zil ikonu ve popup bildirim gosterilir."
+        },
+        {
+          "type": "feature",
+          "file": "admin/cron.php",
+          "description": "E-posta bildirimi: NOTIFY_EMAIL ayarlanmissa cron yeni surum bulunca otomatik mail gonderir."
+        },
+        {
+          "type": "feature",
+          "file": "admin/cron.php",
+          "description": "Cron log: admin/cron.log dosyasina son 100 satir log tutulur. .htaccess ile disaridan erisim engellenir."
+        },
+        {
+          "type": "improvement",
+          "file": "admin/index.php",
+          "description": "Sifre guncelleme formu ayarlar sekmesine entegre edildi. Mevcut sifre, yeni sifre, tekrar kontrolu."
+        },
+        {
+          "type": "improvement",
+          "file": "admin/.htaccess",
+          "description": "passwd.php, .last_commit, .pending_bell, cron.log disaridan erisime kapatildi."
+        }
+      ]
+    },
+    {
+      "version": "1.4.0",
+      "date": "2026-03-28",
+      "title": "Admin Sifre Guncelleme + Manifest",
+      "changes": [
+        {
+          "type": "feature",
+          "file": "admin/index.php",
+          "description": "Ayarlar sekmesine canli sifre guncelleme formu eklendi. Mevcut sifre dogrulamasi, min. 6 karakter kontrolu, eslesmeme kontrolu."
+        },
+        {
+          "type": "feature",
+          "file": "admin/passwd.php",
+          "description": "Guncellenen sifre bu dosyaya kaydedilir. admin/ klasoru altinda otomatik olusturulur. .htaccess ile disaridan erisim engellidir."
+        },
+        {
+          "type": "improvement",
+          "file": "admin/index.php",
+          "description": "Sifre degisikliginden sonra oturum kapatilip giris sayfasina yonlendirilir."
+        }
+      ]
+    },
+    {
+      "version": "1.3.0",
+      "date": "2026-03-27",
+      "title": "Profesyonel Tasarim + Gelismis Rapor",
+      "changes": [
+        {
+          "type": "redesign",
+          "file": "index.php",
+          "description": "whois.com.tr referansiyla tamamen yeniden tasarlandi. Beyaz/mavi temiz arayuz, sticky header, iki sutunlu layout."
+        },
+        {
+          "type": "feature",
+          "file": "index.php",
+          "description": "WHOIS raporu 5 ayri karta bolundu: Kayit Bilgileri, Tarih ve Yas Raporu, DNS Sunuculari, EPP Durum Etiketleri, Ham WHOIS."
+        },
+        {
+          "type": "feature",
+          "file": "index.php",
+          "description": "Alan adi yasi (kac yil, kac gun) ve bitis suresi progress bar ile gosteriliyor. Renk: yesil/turuncu/kirmizi."
+        },
+        {
+          "type": "feature",
+          "file": "includes/whois.php",
+          "description": "updated_date alani eklendi. parseWhoisData last-modified, changed, last-changed anahtarlarini okuyor."
+        }
+      ]
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-03-26",
+      "title": "Kritik Duzeltmeler + Google Ads",
+      "changes": [
+        {
+          "type": "bugfix",
+          "file": "includes/whois.php",
+          "description": "PHP syntax hatasi: single-quote string icindeki Turkce kesme isareti (port 43'e) duzeltildi. Bu hata tum siteyi cokertiyordu."
+        },
+        {
+          "type": "feature",
+          "file": "index.php",
+          "description": "Google AdSense entegrasyonu: header (728x90), sidebar (250x250 x2), icerik orta (responsive) reklam alanlari eklendi."
+        },
+        {
+          "type": "feature",
+          "file": "admin/index.php",
+          "description": "Admin paneli eklendi: dashboard, sorgu gecmisi, TLD istatistigi, cache yonetimi, ayarlar sekmesi."
+        },
+        {
+          "type": "improvement",
+          "file": "includes/db.php",
+          "description": "DB baglantisi basarisiz olursa exception yerine null donduruluyor. Site DB olmadan da aciliyor."
+        }
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-03-25",
+      "title": ".tr Uzantilari Duzeltme + HTTPS Fallback",
+      "changes": [
+        {
+          "type": "bugfix",
+          "file": "includes/whois-servers.php",
+          "description": ".tr uzantilari icin yanlis sunucu (whois.nic.tr) duzeltildi, dogru sunucu whois.metu.edu.tr ayarlandi."
+        },
+        {
+          "type": "feature",
+          "file": "includes/whois.php",
+          "description": ".tr sorgulamasi icin uclu fallback: TCP socket (port 43) -> cURL HTTPS -> RDAP API."
+        },
+        {
+          "type": "bugfix",
+          "file": "includes/whois.php",
+          "description": "checkAvailability fonksiyonu .tr icin ozel mantik eklendi: domain-name:/holder-c:/nserver: -> kayitli, no match found -> musait."
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-03-24",
+      "title": "Ilk Surum",
+      "changes": [
+        {
+          "type": "feature",
+          "file": "index.php",
+          "description": "Ana sayfa: hero, arama kutusu, coklu TLD secici, populer uzantilar, sidebar."
+        },
+        {
+          "type": "feature",
+          "file": "api.php",
+          "description": "AJAX API: action=whois (tekli), action=check (coklu TLD), action=tlds."
+        },
+        {
+          "type": "feature",
+          "file": "includes/whois-servers.php",
+          "description": "200+ TLD WHOIS sunucu listesi. Turkiye, Avrupa, Asya, yeni gTLD uzantilari."
+        },
+        {
+          "type": "feature",
+          "file": "includes/schema.sql",
+          "description": "4 veritabani tablosu: whois_queries, whois_cache, rate_limits, domain_stats."
+        }
+      ]
+    }
+  ],
+  "files": {
+    "index.php": "Ana sayfa — arama, sonuc gosterimi, reklam alanlari",
+    "api.php": "AJAX API endpoint — WHOIS sorgulama motoru",
+    ".htaccess": "Apache yonlendirme, guvenlik, gzip",
+    "admin/index.php": "Admin paneli — dashboard, istatistik, ayarlar, sifre guncelleme",
+    "admin/.htaccess": "Admin klasoru erisim korumasi",
+    "admin/passwd.php": "Guncellenmis admin sifresi (otomatik olusturulur, git'e eklemeyin)",
+    "includes/config.php": "Site ayarlari — DB, WiseCP URL, AdSense ID",
+    "includes/db.php": "PDO veritabani baglantisi — hata toleransli",
+    "includes/whois.php": "WHOIS sorgu motoru — TCP/cURL/RDAP fallback",
+    "includes/whois-servers.php": "200+ TLD WHOIS sunucu haritasi",
+    "includes/schema.sql": "Veritabani sema — ilk kurulum icin import edin",
+    "admin/cron.php": "Zamanlanmis gorev scripti — cron ile calistirin",
+    "admin/.pending_bell": "Bekleyen can bildirimi (otomatik olusturulur, git ignore edin)",
+    "admin/cron.log": "Cron calistirma logu (otomatik olusturulur, git ignore edin)",
+    "github_upload.php": "Tek seferlik GitHub upload scripti — kullandiktan sonra silin",
+    ".gitignore": "Git ignore — hassas dosyalari korur"
+  },
+  "requirements": {
+    "php": ">=7.4",
+    "extensions": [
+      "pdo",
+      "pdo_mysql",
+      "curl"
+    ],
+    "apache_modules": [
+      "mod_rewrite"
+    ],
+    "mysql": ">=5.7"
+  },
+  "installation": {
+    "steps": [
+      "Dosyalari public_html/ altina yukleyin",
+      "includes/schema.sql dosyasini phpMyAdmin ile import edin",
+      "includes/config.php dosyasinda DB_USER, DB_PASS, DB_NAME ayarlayin",
+      "includes/config.php dosyasinda WISECP_URL degerini dogrulayin",
+      "Admin paneli: alanadiyazmani.com/admin/ — giris: admin / admin123",
+      "Admin > Ayarlar > Sifre Guncelle bolumunden sifrenizi degistirin"
+    ]
+  },
+  "update_instructions": {
+    "description": "Her guncelleme bu manifest.json dosyasi ile teslim edilir.",
+    "steps": [
+      "manifest.json dosyasindaki 'changes' listesini inceleyin",
+      "Yalnizca degisen dosyalari sunucuya yukleyin",
+      "includes/config.php uzerine YAZMAYIN — kendi ayarlariniz silinir",
+      "admin/passwd.php uzerine YAZMAYIN — sifreniz sifirlanir",
+      "Veritabani sema degisikliklerini 'db_migrations' anahtarindan takip edin"
+    ]
+  },
+  "db_migrations": {
+    "1.0.0": "includes/schema.sql — tam kurulum",
+    "1.4.0": "Migrasyon yok — yalnizca PHP dosyasi degisikligi"
+  },
+  "do_not_overwrite": [
+    "includes/config.php",
+    "admin/passwd.php",
+    "admin/.pending_bell",
+    "admin/cron.log",
+    "admin/.last_commit"
+  ]
+}
