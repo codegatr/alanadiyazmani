@@ -1,14 +1,8 @@
-# Hassas dosyalar — repo'ya ekleme
 includes/config.php
 admin/passwd.php
 admin/.pending_bell
 admin/.last_commit
 admin/cron.log
-
-# Upload scripti — kullandıktan sonra sil
 github_upload.php
-
-# Geçici
-*.log
 *.bak
 .DS_Store
